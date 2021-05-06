@@ -1,6 +1,7 @@
 package com.jetbrains.handson.httpapi
 
 import com.jetbrains.handson.httpapi.routes.customerRouting
+import com.jetbrains.handson.httpapi.routes.dummyRoutes
 import io.ktor.application.*
 import io.ktor.features.*
 import io.ktor.response.*
@@ -16,6 +17,7 @@ fun Application.module() {
         json()
     }
     registerCustomerRoutes()
+    dummyRoutes()
 }
 
 fun Application.registerCustomerRoutes(){
@@ -29,5 +31,11 @@ fun Application.defaultRoutes(){
         get("/"){
             call.respondText("halo bro")
         }
+    }
+}
+
+fun Application.dummyRoutes(){
+    routing {
+        this.dummyRoutes()
     }
 }
